@@ -1,3 +1,7 @@
 test:
+  pre:
+    - echo aaa
   override:
     - exit 0
+  posr:
+    - echo bbb
