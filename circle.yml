@@ -1,5 +1,6 @@
 test:
   override:
+    - exit 1
     - exit 0
   post:
     - echo bbb
