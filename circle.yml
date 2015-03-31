@@ -11,8 +11,11 @@ dependencies:
   cache_directories:
     - "~/cache"
   pre:
+    - cat ./ssh/tjinjin_docker.conf >> ~/.ssh/config
     - ./script/docker-build.sh
     - docker run -d --privileged -p 40000:22 docker/centos-sshd; sleep 2
+    - docker run --rm -v /usr/local/bin:/target jpetazzo/nsenter;container=$(docker ps -q)
+    - docker-enter $container /usr/sbin/sshd -D &
 test:
   pre:
-    - ssh docker@127.0.0.1 -p 40000 -i ~/.ssh/id_tjinjin.docker -C "ls -la"
+    - ssh tjinjin-docker -C "ls /"
