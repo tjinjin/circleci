@@ -1,7 +1,19 @@
-test:
-  override:
-    - exit 0
+machine:
+  timezone:
+    Asia/Tokyo
+  services:
+    - docker
+checkout:
   post:
-    - echo bbb
+    - git submodule sync
+    - git submodule update --init
+dependencies:
+  cache_directories:
+    - "~/cache"
   pre:
-    - echo aaa
+    - cp ./.ssh/ssh-config.circleci ~/.ssh/config
+    - ./script/docker-build.sh
+    - docker run -d --privileged -p 40000:22 docker/centos-sshd; sleep 2
+test:
+  pre:
+    - ssh docker@127.0.0.1 -p 40000 -i ~/.ssh/id_tjinjin.docker -C "ls -la"
