@@ -13,9 +13,8 @@ dependencies:
   pre:
     - cat ./.ssh/tjinjin_docker.conf >> ~/.ssh/config
     - ./script/docker-build.sh
-    - docker run -d --privileged -p 40000:22 docker/centos-sshd; sleep 2
-    - docker run --rm -v /usr/local/bin:/target jpetazzo/nsenter;container=$(docker ps -q)
-    - docker-enter $container /usr/sbin/sshd -D &
+    - docker run -d --privileged -p 40000:22 --name test docker/centos-sshd; sleep 2
+    - docker run --rm -v /usr/local/bin:/target jpetazzo/nsenter;docker-enter test /usr/sbin/sshd -D &
 test:
   pre:
     - ssh tjinjin-docker -C "ls /"
