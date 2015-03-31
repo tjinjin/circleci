@@ -1,5 +1,5 @@
 FROM tjinjin/centos7
-MAINTAINER feedforce
+MAINTAINER tjinjin
 
 # package
 RUN yum update -y && \
