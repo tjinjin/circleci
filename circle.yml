@@ -1,3 +1,7 @@
+general:
+  branches:
+    ignore:
+      - /terraform\/.*/
 machine:
   timezone:
     Asia/Tokyo
