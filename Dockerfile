@@ -1,4 +1,4 @@
-FROM tjinjin/centos7
+FROM centos:centos7
 MAINTAINER tjinjin
 
 # package
