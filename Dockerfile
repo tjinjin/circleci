@@ -2,8 +2,7 @@ FROM centos:centos7
 MAINTAINER tjinjin
 
 # package
-RUN yum update -y && \
-    yum install -y bzip logrotate make net-tools nfs-utils openssh openssh-clients openssh-server \
+RUN yum install -y bzip logrotate make net-tools nfs-utils openssh openssh-clients openssh-server \
     openssl passwd rsync rsyslog sudo tar wget && \
     yum clean all
 
