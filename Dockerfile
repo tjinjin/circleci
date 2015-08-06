@@ -28,3 +28,5 @@ RUN sed -ri 's/#PermitRootLogin yes/PermitRootLogin yes/g' /etc/ssh/sshd_config 
 
 ## Pam認証が有効でもログインするための設定
     sed -i -e 's/^\(session.*pam_loginuid.so\)/#\1/g' /etc/pam.d/sshd
+
+ENTRYPOINT ["/usr/sbin/init"]
