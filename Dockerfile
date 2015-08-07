@@ -29,6 +29,6 @@ RUN sed -ri 's/#PermitRootLogin yes/PermitRootLogin yes/g' /etc/ssh/sshd_config 
     sed -i -e 's/^\(session.*pam_loginuid.so\)/#\1/g' /etc/pam.d/sshd
 
 ##
-RUN echo "AddressFamily inet" >> /etc/ssh/sshd_config
+#RUN echo "AddressFamily inet" >> /etc/ssh/sshd_config
 
 ENTRYPOINT ["/usr/sbin/init"]
