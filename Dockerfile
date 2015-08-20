@@ -3,7 +3,7 @@ MAINTAINER tjinjin
 
 # package
 RUN yum install -y bzip logrotate make net-tools nfs-utils openssh openssh-clients openssh-server \
-    openssl passwd rsync rsyslog sudo tar wget initscripts && \
+    openssl passwd rsync rsyslog sudo tar wget initscripts dbus && \
     yum clean all
 
 ## Create user
