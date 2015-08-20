@@ -28,6 +28,11 @@ RUN sed -ri 's/#PermitRootLogin yes/PermitRootLogin yes/g' /etc/ssh/sshd_config 
 ## Pam認証が有効でもログインするための設定
     sed -i -e 's/^\(session.*pam_loginuid.so\)/#\1/g' /etc/pam.d/sshd
 
+## http://qiita.com/jagaximo/items/c810ebce796d9e5e496e
+RUN echo "root:root" | chpasswd
+RUN /usr/bin/ssh-keygen -t rsa -b 2048 -f /etc/ssh/ssh_host_rsa_key -N ""
+RUN /usr/bin/ssh-keygen -t dsa -b 1024 -f /etc/ssh/ssh_host_dsa_key -N ""
+
 ##
 #RUN echo "AddressFamily inet" >> /etc/ssh/sshd_config
 
